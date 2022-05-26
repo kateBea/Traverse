@@ -15,10 +15,11 @@ class graph
 {
 public:
     /*default constructor*/
-    graph() {_graph = std::vector<std::list<vertex>> ();}
+    graph() {}
 
     /*parametrized constructor. Graph with n vertices*/
-    graph(int n) {_graph = std::vector<std::list<vertex>> (n, std::list<vertex>());}
+    graph(int n) :
+        _graph (std::vector<std::list<vertex>> (n, std::list<vertex>())) {}
     
     /*total amount of edges*/
     unsigned int size() {return edges.size();}
@@ -43,7 +44,7 @@ public:
     }
 
     /*simply increment the amount of vertex graph can hold*/
-    void add_vertex() {_graph.push_back(std::list<vertex> ());}
+    void vertex_push() {_graph.push_back(std::list<vertex> ());}
     void delete_edge(const edge& _edge)
     {
         std::set<edge>::const_iterator it = edges.find(_edge);
@@ -68,7 +69,7 @@ public:
     }
 
     /*erase last vertex from the graph*/
-    void delete_vertex()
+    void vertex_pop()
     {
         vertex _vertex = _graph.size()-1;
 
@@ -104,7 +105,7 @@ public:
         return _graph[_vertex].size();
     }
 
-    /*a list of all the vertices adjacenst to the gievn _vertex*/
+    /*returns a reference to a list of all the vertices adjacent to _vertex*/
     std::list<vertex>& adjacents_of_vertex(vertex _vertex)
     {
         assert(_vertex >= 0 and _vertex < _graph.size());
