@@ -1,3 +1,14 @@
+/**
+ * @file graph.h
+ * @author kate (zanetty54@gmail.com)
+ * @brief 
+ * @version 1.0
+ * @date 2022-05-26
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef GRAPH_HH
 #define GRAPH_HH
 
@@ -7,8 +18,8 @@
 #include <list>
 #include <set>
 
-typedef std::pair<int, int> edge;
-typedef int vertex;
+typedef     std::pair<int, int>     edge;
+typedef     int                     vertex;
 
 //DEFINITION OF CLASS GRAPH
 class graph
@@ -45,6 +56,8 @@ public:
 
     /*simply increment the amount of vertex graph can hold*/
     void vertex_push() {_graph.push_back(std::list<vertex> ());}
+
+    /*erase edge _edge from the set of edges of the graph*/
     void delete_edge(const edge& _edge)
     {
         std::set<edge>::const_iterator it = edges.find(_edge);

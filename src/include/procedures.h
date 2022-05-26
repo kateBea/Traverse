@@ -1,3 +1,14 @@
+/**
+ * @file procedures.h
+ * @author kate (zanetty54@gmail.com)
+ * @brief 
+ * @version 1.0
+ * @date 2022-05-26
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <graph.h>
 
 /*true if theres path from frist vertex to second (implements bfs)*/
