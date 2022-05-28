@@ -2,7 +2,7 @@
  * @file graph.h
  * @author kate (zanetty54@gmail.com)
  * @brief 
- * @version 1.1
+ * @version 1.2
  * @date 2022-05-26
  * 
  * @copyright Copyright (c) 2022
@@ -19,8 +19,8 @@
 #include <list>
 #include <set>
 
-typedef     std::pair<int, int>     edge;
-typedef     int                     vertex;
+typedef     size_t                      vertex;
+typedef     std::pair<vertex, vertex>   edge;
 
 //DEFINITION OF CLASS GRAPH
 struct graph
@@ -33,10 +33,10 @@ struct graph
         _graph (std::vector<std::list<vertex>> (n, std::list<vertex>())) {}
     
     /*total amount of edges*/
-    unsigned int size() const {return edges.size();}
+    size_t size() const {return edges.size();}
 
     /*total amount of vertices*/
-    unsigned int grade() const {return _graph.size();}
+    size_t grade() const {return _graph.size();}
 
     /*add edge to graph. No changes if elready existed*/
     void add_edge(const edge& _edge)
@@ -45,9 +45,11 @@ struct graph
         if (it == edges.end())
         {   
             //check if _edge contains valid edge values
-            bool range_1 = _edge.first >= 0 and _edge.second <= (int)_graph.size() -1;
-            bool range_2 = _edge.second >= 0 and _edge.first <= (int)_graph.size() -1;
-            assert(range_1 or range_2);
+            bool range_1 =  _edge.second <= _graph.size() -1;
+            bool range_2 =  _edge.first <= _graph.size() -1;
+            bool ribbon  =  _edge.first == _edge.second;     
+
+            assert((range_1 or range_2) and not ribbon);
 
             edges.insert(_edge);
             _graph[_edge.first].push_back(_edge.second);
@@ -59,6 +61,7 @@ struct graph
 
     /*Returns true if the graph is empty, false otherwise*/
     bool empty() const {return _graph.size() == 0;}
+
     /*erase edge _edge from the set of edges of the graph*/
     void delete_edge(const edge& _edge)
     {
@@ -66,8 +69,8 @@ struct graph
         if (it == edges.end())
         {   
             //check if _edge contains valid edge values
-            bool range_1 = _edge.first >= 0 and _edge.second <= (int)_graph.size() -1;
-            bool range_2 = _edge.second >= 0 and _edge.first <= (int)_graph.size() -1;
+            bool range_1 = _edge.second <= _graph.size() -1;
+            bool range_2 = _edge.first <= _graph.size() -1;
             assert(range_1 or range_2);
 
             //era edge from graph
@@ -111,9 +114,9 @@ struct graph
     }
 
     /*returns the number of edges incidents to the vertex*/
-    unsigned int vertex_degree(const vertex& _vertex) const
+    size_t vertex_degree(const vertex& _vertex) const
     {
-        assert(_vertex >= 0 and _vertex < (int)_graph.size());
+        assert(_vertex < _graph.size());
         //vertex is valid
         
         //to be revised still
@@ -123,7 +126,7 @@ struct graph
     /*returns a reference to a list of all the vertices adjacent to _vertex*/
     std::list<vertex>& adjacents_of_vertex(vertex _vertex)
     {
-        assert(_vertex >= 0 and _vertex < (int)_graph.size());
+        assert(_vertex < _graph.size());
         //vertex is valid
 
         return _graph[_vertex];
