@@ -10,7 +10,7 @@
  */
 
 #include <graph.h>
-#include <help_log.h>
+#include <debug_log.h>
 #include <procedures.h>
 #include <iostream>
 

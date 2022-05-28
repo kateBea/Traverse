@@ -2,7 +2,7 @@
  * @file graph.h
  * @author kate (zanetty54@gmail.com)
  * @brief 
- * @version 1.0
+ * @version 1.1
  * @date 2022-05-26
  * 
  * @copyright Copyright (c) 2022
@@ -13,6 +13,7 @@
 #define GRAPH_HH
 
 #include <utility>
+#include <iostream>
 #include <vector>
 #include <cassert>
 #include <list>
@@ -44,8 +45,8 @@ struct graph
         if (it == edges.end())
         {   
             //check if _edge contains valid edge values
-            bool range_1 = _edge.first >= 0 and _edge.second <= _graph.size() -1;
-            bool range_2 = _edge.second >= 0 and _edge.first <= _graph.size() -1;
+            bool range_1 = _edge.first >= 0 and _edge.second <= (int)_graph.size() -1;
+            bool range_2 = _edge.second >= 0 and _edge.first <= (int)_graph.size() -1;
             assert(range_1 or range_2);
 
             edges.insert(_edge);
@@ -65,8 +66,8 @@ struct graph
         if (it == edges.end())
         {   
             //check if _edge contains valid edge values
-            bool range_1 = _edge.first >= 0 and _edge.second <= _graph.size() -1;
-            bool range_2 = _edge.second >= 0 and _edge.first <= _graph.size() -1;
+            bool range_1 = _edge.first >= 0 and _edge.second <= (int)_graph.size() -1;
+            bool range_2 = _edge.second >= 0 and _edge.first <= (int)_graph.size() -1;
             assert(range_1 or range_2);
 
             //era edge from graph
@@ -112,7 +113,7 @@ struct graph
     /*returns the number of edges incidents to the vertex*/
     unsigned int vertex_degree(const vertex& _vertex) const
     {
-        assert(_vertex >= 0 and _vertex < _graph.size());
+        assert(_vertex >= 0 and _vertex < (int)_graph.size());
         //vertex is valid
         
         //to be revised still
@@ -122,7 +123,7 @@ struct graph
     /*returns a reference to a list of all the vertices adjacent to _vertex*/
     std::list<vertex>& adjacents_of_vertex(vertex _vertex)
     {
-        assert(_vertex >= 0 and _vertex < _graph.size());
+        assert(_vertex >= 0 and _vertex < (int)_graph.size());
         //vertex is valid
 
         return _graph[_vertex];
@@ -133,6 +134,10 @@ struct graph
     {
         return adjacents_of_vertex(_vertex);
     }
+
+    /*Print the whole adjacency list of a graph to the std error channel*/ 
+    /*Every vertex with its adjacents*/
+    friend std::ostream& operator<<(std::ostream& _cout, const graph& _graph);
 
     
     //graph container
