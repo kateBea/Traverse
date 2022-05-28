@@ -17,9 +17,9 @@ bool bfs_to_target(const graph&, vertex, vertex);
 bool dfs_to_target(const graph&, vertex, vertex);
 
 /*bfs path starting from given vertex*/
-void bfs_path(const graph&, vertex);
+std::list<vertex> bfs_path(const graph&, vertex);
 /*dfs path starting from given vertex*/
-void dfs_path(const graph&,vertex);
+std::list<vertex> dfs_path(const graph&,vertex);
 
 /*bfs path all connex component*/
 void bfs_path(const graph&);

@@ -22,9 +22,8 @@ typedef     std::pair<int, int>     edge;
 typedef     int                     vertex;
 
 //DEFINITION OF CLASS GRAPH
-class graph
+struct graph
 {
-public:
     /*default constructor*/
     graph() {}
 
@@ -33,10 +32,10 @@ public:
         _graph (std::vector<std::list<vertex>> (n, std::list<vertex>())) {}
     
     /*total amount of edges*/
-    unsigned int size() {return edges.size();}
+    unsigned int size() const {return edges.size();}
 
     /*total amount of vertices*/
-    unsigned int grade() {return _graph.size();}
+    unsigned int grade() const {return _graph.size();}
 
     /*add edge to graph. No changes if elready existed*/
     void add_edge(const edge& _edge)
@@ -57,6 +56,8 @@ public:
     /*simply increment the amount of vertex graph can hold*/
     void vertex_push() {_graph.push_back(std::list<vertex> ());}
 
+    /*Returns true if the graph is empty, false otherwise*/
+    bool empty() const {return _graph.size() == 0;}
     /*erase edge _edge from the set of edges of the graph*/
     void delete_edge(const edge& _edge)
     {
@@ -99,7 +100,7 @@ public:
     }
 
     /*return the graph density*/
-    float graph_density() 
+    float graph_density() const
     {
         float size = edges.size();
         float total_vertices = _graph.size();
@@ -109,7 +110,7 @@ public:
     }
 
     /*returns the number of edges incidents to the vertex*/
-    unsigned int vertex_degree(const vertex& _vertex)
+    unsigned int vertex_degree(const vertex& _vertex) const
     {
         assert(_vertex >= 0 and _vertex < _graph.size());
         //vertex is valid
@@ -133,7 +134,7 @@ public:
         return adjacents_of_vertex(_vertex);
     }
 
-private:
+    
     //graph container
     std::vector<std::list<vertex>> _graph;
 

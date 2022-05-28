@@ -14,5 +14,20 @@
 
 #include <graph.h>
 
+//- Print whole adjancecy list
+//- Print adjacents of given vertex
 
-#endif
+std::ostream& operator<<(std::ostream& _cout, const graph& _graph)
+{
+    for (int i = 0; i < _graph.grade(); ++i)
+    {
+        std:cout << "adjacents of vertex: (" << i << "): ";
+        for (const auto vertex : _graph.graph[i])
+            std::cout << "[" << vertex << "] ";
+        std::cout << endl;
+    }
+
+    return _cout;
+}
+
+#endif  //END OF HELP_LOG_HH
