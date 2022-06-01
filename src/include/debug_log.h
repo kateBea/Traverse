@@ -13,6 +13,7 @@
 #define DEBUG_LOG_HH
 
 #include <graph.h>
+#include <stack>
 
 /*File contains someuseful utilities for debugging*/
 /*COMPILE WITGH GRAPH_DEBUG FLAG*/
@@ -32,6 +33,19 @@ inline std::ostream& operator<<(std::ostream& _cout, const graph& _graph)
         std::cerr << std::endl;
     }
     return _cout;
+}
+
+/*print a stack of vertices. Useful for dfs debugging, use wisely*/
+void print_stack(std::stack<vertex> _stack)
+{
+    std::cout << '{';
+    while (not _stack.empty())
+    {
+        std::cerr << _stack.top();
+        std::cout << ", ";
+        _stack.pop();
+    }
+    std::cout << '}';
 }
 
 /*print and edge to the std output channel*/

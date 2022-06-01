@@ -56,7 +56,7 @@ struct graph
         }
     }
 
-    /*simply increment the amount of vertex graph can hold*/
+    /*increment the amount of vertex graph can hold*/
     void vertex_push() {_graph.push_back(std::list<vertex> ());}
 
     /*Returns true if the graph is empty, false otherwise*/

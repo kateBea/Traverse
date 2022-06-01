@@ -2,7 +2,7 @@
  * @file procedures.cc
  * @author kate (zanetty54@gmail.com)
  * @brief 
- * @version 1.1
+ * @version 1.2
  * @date 2022-05-26
  * 
  * @copyright Copyright (c) 2022
@@ -87,6 +87,8 @@ bool dfs_to_target(const graph& _graph, vertex start, vertex target)
         /*stop traversing graph if target found*/
         if (target_found) break;
     }
+
+    return target_found;
 }
 
 /*bfs path starting from given vertex*/
@@ -131,7 +133,7 @@ std::list<vertex> bfs_path(const graph& _graph, vertex _vertex)
     return path;
 }
 
-/*immersion dfc_path*/
+/*immersion dfs_path*/
 void dfs_rec(const graph& _graph, std::vector<bool>& vis, std::list<vertex>& path, vertex _vertex)
 {
     if (not vis[_vertex])
@@ -153,8 +155,8 @@ std::list<vertex> dfs_path(const graph& _graph, vertex _vertex)
     total_vertices = _graph.grade();
     visited_vertices = std::vector<bool> (total_vertices, false);
 
-    /*loop through all connected components*/
-    for (int conn_comp = 0; conn_comp < total_vertices; ++conn_comp)
+    /*loop through connected components starting from _vertex in incresing order*/
+    for (int conn_comp = _vertex; conn_comp < total_vertices; ++conn_comp)
         dfs_rec(_graph, visited_vertices, path, conn_comp);
 
     return path;
@@ -163,45 +165,64 @@ std::list<vertex> dfs_path(const graph& _graph, vertex _vertex)
 /*bfs path all connected component*/
 /*start traversing from random vertex*/
 /*Print visited nodes to standard error channel*/
+/*Print depth distance of every visited vertex*/
 void bfs_path(const graph& _graph)
 {
     int total_vertices;
     vertex _vertex;
-    std::vector<bool> visited_nodes;
-    std::queue<vertex> next_on_line;
+    std::vector<bool>   visited_nodes;
+    std::vector<float>  depth;
+    std::queue<vertex>  next_on_line;
 
+    total_vertices  =   _graph.grade();
+    visited_nodes   =   std::vector<bool> (total_vertices, false);
+    depth           =   std::vector<float> (total_vertices, -1);
+   
     /*pick random vertex*/
-    std::random_device dev;
-    std::mt19937 rng(dev());
+    std::random_device  dev;
+    std::mt19937        rng(dev());
     // distribution in range [0, total_vertices)
-    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,total_vertices-1);
-    _vertex = (vertex)dist6(rng);
+    std::uniform_int_distribution<std::mt19937::result_type>    dist6(0,total_vertices-1);
+    _vertex         =   (vertex)dist6(rng);
 
-    total_vertices = _graph.grade();
-    visited_nodes = std::vector<bool> (total_vertices, false);
-    next_on_line.push(_vertex);
 
     /*in case we have separedted connected components*/
     /*loop through all of them*/
-    for (int node = 0; node < total_vertices; ++node)
+    for (int node = _vertex; node < total_vertices; ++node)
     {
         if (not visited_nodes[node])
-        {
+        {   
+            /*new connected component mean we start at depth 0*/
+            depth[node] = 0;
+
             visited_nodes[node] = true;
             std::cout << "visiting node: [";
-            std::cout << node << "]" << std::endl;
+            std::cout << node << "]";
+            std::cout << " : deph -> (";
+            std::cout << depth[node];
+            std::cout << ')' << std::endl;
+
+            next_on_line.push(node);
             while (not next_on_line.empty())
             {
                 vertex front_vertex = next_on_line.front();
                 next_on_line.pop();
                 
                 /*visit all neighbor vertices*/
-                for (auto next_vertex : _graph._graph[front_vertex])
+                for (auto adjacent : _graph._graph[front_vertex])
                 {
-                    std::cout << "visiting node: [";
-                    std::cout << next_vertex << "]" << std::endl;
-                    visited_nodes[next_vertex] = true;
-                    next_on_line.push(next_vertex);
+                    if (not visited_nodes[adjacent])
+                    {
+                        std::cout << "visiting node: [";
+                        std::cout << adjacent << "]";
+                        visited_nodes[adjacent] = true;
+                        depth[adjacent] = depth[front_vertex] + 1;
+                        next_on_line.push(adjacent);
+                        std::cout << " : deph -> (";
+                        std::cout << depth[adjacent];
+                        std::cout << ')' << std::endl;
+                        
+                    }
                 }
             }
         }
@@ -213,24 +234,24 @@ void bfs_path(const graph& _graph)
 /*Print visited nodes to standard error channel*/
 void dfs_path(const graph& _graph)
 {
-    int total_vertices;
+    size_t total_vertices;
     vertex _vertex;
-    std::stack<vertex> next_on_line;
-    std::vector<bool> visited_nodes;
+    std::stack<vertex>  next_on_line;
+    std::vector<bool>   visited_nodes;
+
+    total_vertices      =   _graph.grade();
+    visited_nodes       =   std::vector<bool> (total_vertices, false);
 
     /*pick random vertex*/
-    std::random_device dev;
-    std::mt19937 rng(dev());
+    std::random_device      dev;
+    std::mt19937            rng(dev());
     // distribution in range [0, total_vertices)
     std::uniform_int_distribution<std::mt19937::result_type> dist6(0,total_vertices-1);
-    _vertex = (vertex)dist6(rng);
+    _vertex             =   (vertex)dist6(rng);
 
-    total_vertices = _graph.grade();
-    visited_nodes = std::vector<bool> (total_vertices, false);
-    next_on_line.push(_vertex);
 
     /*loop through all connected components*/
-    for (int node = 0; node < total_vertices; ++node)
+    for (size_t node = _vertex; node < total_vertices; ++node)
     {
         next_on_line.push(node);
         while (not next_on_line.empty())

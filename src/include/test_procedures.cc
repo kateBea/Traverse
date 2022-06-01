@@ -14,6 +14,7 @@
 //g++ -std=c++20 -Wall -Wextra -Wpedantic -o main test_procedures.cc -I . -D GRAPH_DEBUG
 //COMPILE COMMAND WITH GCC
 #include <debug_log.h>
+#include <procedures.h>
 #include <iostream>
 #include <graph.h>
 
@@ -52,8 +53,8 @@ int main(int, char**)
 
     std::cout << "This line comes after insertion of few edges into graph" << std::endl;
     std::cout << "-------------------------------------------------------" << std::endl;
-    std::cout << myGraph.size() << std::endl;
-    std::cout << myGraph.grade() << std::endl;
+    std::cout << "graph has (" << myGraph.size() << ") edges"<< std::endl;
+    std::cout << "graph grade is: " << myGraph.grade() << std::endl;
 
     if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
     else                    std::cout << "graph is not empty" << std::endl;
@@ -61,6 +62,8 @@ int main(int, char**)
     std::cout << "we print the graph" << std::endl;
     std::cout << myGraph << std::endl;
 
+    std::cout << "path followed with dfs traversing" << std::endl; dfs_path(myGraph); std::cout << std::endl;
+    std::cout << "path followed with bfs traversing" << std::endl; bfs_path(myGraph);
     std::cin.get();
     return EXIT_SUCCESS;
 }
