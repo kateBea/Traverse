@@ -40,7 +40,6 @@ general class and the procedures.
 
     std::cout << "path followed with dfs traversing" << std::endl; dfs_path(myGraph); std::cout << std::endl;
     std::cout << "path followed with bfs traversing" << std::endl; bfs_path(myGraph);
-    std::cin.get();
 ```
 
 
