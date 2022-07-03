@@ -21,20 +21,6 @@
 
 #ifdef GRAPH_DEBUG
 
-/*Print the whole adjacency list of a graph to the std error channel*/ 
-/*Every vertex with its adjacents*/
-inline std::ostream& operator<<(std::ostream& _cout, const graph& _graph)
-{
-    for (unsigned int i = 0; i < _graph.grade(); ++i)
-    {
-        std::cerr << "adjacents of vertex: (" << i << "): ";
-        for (const auto _vertex : _graph._graph[i])
-            std::cerr << "[" << _vertex << "] ";
-        std::cerr << std::endl;
-    }
-    return _cout;
-}
-
 /*print a stack of vertices. Useful for dfs debugging, use wisely*/
 void print_stack(std::stack<vertex> _stack)
 {

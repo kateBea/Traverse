@@ -15,7 +15,7 @@ There is some scripts provided showing some small usage of the
 general class and the procedures.
 
 ```cc
-graph myGraph;
+    graph myGraph;
 
     std::cout << myGraph.size() << std::endl;
     std::cout << myGraph.grade() << std::endl;
