@@ -14,8 +14,9 @@
 #include <graph.h>
 #include <stack>
 
-/*File contains someuseful utilities for debugging*/
-/*COMPILE WITGH GRAPH_DEBUG FLAG*/
+// File contains someuseful utilities for debugging
+
+/*Compile with GRAPH_DEBUG macro*/
 
 #ifdef GRAPH_DEBUG
 
