@@ -7,8 +7,6 @@
  * @copyright Copyright (c) 2022
  */
 
-//compile:  
-//g++ -std=c++20 -Wall -Wextra -Wpedantic -o main test_procedures.cc -I . -D GRAPH_DEBUG
 #include <procedures.h>
 #include <cstdint>
 #include <iostream>
