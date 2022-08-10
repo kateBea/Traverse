@@ -1,6 +1,5 @@
 /**
  * @file help_log.h
- * @author kate (zanetty54@gmail.com)
  * @brief 
  * @version 1.1
  * @date 2022-05-26
@@ -9,15 +8,14 @@
  * 
  */
 
-#ifndef DEBUG_LOG_HH
-#define DEBUG_LOG_HH
+#ifndef DEBUG_LOG_H
+#define DEBUG_LOG_H
 
 #include <graph.h>
 #include <stack>
 
 /*File contains someuseful utilities for debugging*/
 /*COMPILE WITGH GRAPH_DEBUG FLAG*/
-//- Print adjacents of given vertex
 
 #ifdef GRAPH_DEBUG
 

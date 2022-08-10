@@ -40,3 +40,5 @@ Here is a small example:
     std::cout << "path followed with dfs traversing" << std::endl; dfs_path(myGraph); std::cout << std::endl;
     std::cout << "path followed with bfs traversing" << std::endl; bfs_path(myGraph);
 ```
+
+Graph picture made with: [Graph Editor](https://csacademy.com/app/graph_editor/)
