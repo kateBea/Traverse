@@ -21,7 +21,7 @@ int main(int, char**)
     
     /*for the actual graph visualization*/
     /*sample graph. See graph_sample_2_test_procedures.png*/
-    constexpr std::array<edge, size> graph_sample_2 = {
+    constexpr edge graph_sample_2[] = {
         {0,2}, {0,4}, {0,5},
         {1,4},
         {2,3}, {2,4},
@@ -35,7 +35,7 @@ int main(int, char**)
         {10,7},{10,9}
     };
     
-    graph myGraph;
+    graph myGraph(size);
 
     std::cout << myGraph.size() << std::endl;
     std::cout << myGraph.grade() << std::endl;
@@ -43,7 +43,6 @@ int main(int, char**)
     if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
     else                    std::cout << "graph is not empty" << std::endl;
 
-    myGraph = graph(GRAPH_SIZE);
     for (const auto& _edges : graph_sample_2)
         myGraph.add_edge(_edges);
 
