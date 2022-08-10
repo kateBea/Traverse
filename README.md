@@ -3,9 +3,6 @@ Some small scripts made on C++ to test BFS and DFS traverse on
 graphs implemented as adjacency lists. There's still some changes to be done.
 
 # GRAPH DATA
-You can visualize graph from the next url:
-https://csacademy.com/app/graph_editor/
-
 Important NOTE: The graph is assumed to be directed, i.e say
 we have a graph with 3 nodes {0, 1, 2}, insert edge (1,2)
 means there is an edge from vertex 1 to vertex 2, if we want the 
@@ -41,4 +38,4 @@ Here is a small example:
     std::cout << "path followed with bfs traversing" << std::endl; bfs_path(myGraph);
 ```
 
-Graph picture made with: [Graph Editor](https://csacademy.com/app/graph_editor/)
+Graph picture made with (can use to visualize graphs): [Graph Editor](https://csacademy.com/app/graph_editor/)
