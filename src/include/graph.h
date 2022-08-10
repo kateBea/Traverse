@@ -21,7 +21,7 @@
 #ifdef WINDOWS_ISSUE
 // I got an error when building on windwos 
 // for usage of and, not, or keywords
-// these macros fixed it
+// these macros fixed it, pretty scuffed fix
 #define not !
 #define and &&
 #define or  ||
