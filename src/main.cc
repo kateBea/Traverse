@@ -1,7 +1,7 @@
 /**
  * @file main.cc
  * @brief 
- * @version 1.0
+ * @version 1.1
  * @date 2022-05-26
  * 
  * @copyright Copyright (c) 2022
@@ -9,7 +9,6 @@
 
 //compile:  
 //g++ -std=c++20 -Wall -Wextra -Wpedantic -o main test_procedures.cc -I . -D GRAPH_DEBUG
-#include <debug_log.h>
 #include <procedures.h>
 #include <cstdint>
 #include <iostream>

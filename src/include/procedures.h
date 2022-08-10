@@ -1,8 +1,7 @@
 /**
- * @file procedures.cc
- * @author kate (zanetty54@gmail.com)
+ * @file procedures.h
  * @brief 
- * @version 1.2
+ * @version 1.1
  * @date 2022-05-26
  * 
  * @copyright Copyright (c) 2022

@@ -1,16 +1,15 @@
 /**
  * @file graph.h
- * @author kate (zanetty54@gmail.com)
  * @brief 
- * @version 1.2
+ * @version 1.1
  * @date 2022-05-26
  * 
  * @copyright Copyright (c) 2022
  * 
  */
 
-#ifndef GRAPH_HH
-#define GRAPH_HH
+#ifndef GRAPH_H
+#define GRAPH_H
 
 #include <utility>
 #include <iostream>
@@ -18,6 +17,15 @@
 #include <cassert>
 #include <list>
 #include <set>
+
+#ifdef WINDOWS_ISSUE
+// I got an error when building on windwos 
+// for usage of and, not, or keywords
+// these macros fixed it
+#define not !
+#define and &&
+#define or  ||
+#endif
 
 typedef     size_t                      vertex;
 typedef     std::pair<vertex, vertex>   edge;
