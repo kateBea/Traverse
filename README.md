@@ -1,7 +1,6 @@
 # BFS and DFS test
 Some small scripts made on C++ to test BFS and DFS traverse on 
-graphs implemented as adjacency lists. There's still some changes to be made
-including pick on some of data structures made.
+graphs implemented as adjacency lists. There's still some changes to be done.
 
 # GRAPH DATA
 You can visualize graph from the next url:
@@ -12,11 +11,11 @@ we have a graph with 3 nodes {0, 1, 2}, insert edge (1,2)
 means there is an edge from vertex 1 to vertex 2, if we want the 
 edge in the oposite direction we may add it using provided methods.
 There is some scripts provided showing some small usage of the 
-general class and the procedures.
+general class and the functions.
+
+Here is a small example:
 
 ```cc
-    graph myGraph;
-
     std::cout << myGraph.size() << std::endl;
     std::cout << myGraph.grade() << std::endl;
 
@@ -41,5 +40,3 @@ general class and the procedures.
     std::cout << "path followed with dfs traversing" << std::endl; dfs_path(myGraph); std::cout << std::endl;
     std::cout << "path followed with bfs traversing" << std::endl; bfs_path(myGraph);
 ```
-
-
