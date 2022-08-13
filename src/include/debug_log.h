@@ -16,8 +16,6 @@
 
 // File contains someuseful utilities for debugging
 
-/*Compile with GRAPH_DEBUG macro*/
-
 #ifdef GRAPH_DEBUG
 
 /*print a stack of vertices. Useful for dfs debugging, use wisely*/
