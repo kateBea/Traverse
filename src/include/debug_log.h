@@ -14,7 +14,7 @@
 #include <graph.h>
 #include <stack>
 
-// File contains someuseful utilities for debugging
+// utilities for debugging
 
 #ifdef GRAPH_DEBUG
 
