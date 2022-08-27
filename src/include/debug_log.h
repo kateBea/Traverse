@@ -1,13 +1,3 @@
-/**
- * @file debug_log.h
- * @brief 
- * @version 1.1
- * @date 2022-05-26
- * 
- * @copyright Copyright (c) 2022
- * 
- */
-
 #ifndef DEBUG_LOG_H
 #define DEBUG_LOG_H
 
