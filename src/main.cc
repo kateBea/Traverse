@@ -19,12 +19,12 @@
 void usage()
 {
     std::cerr << "usage: traverse file_name grap_degree\n"
-    "Program expects three arguments\n";
+                    "Program expects three arguments\n";
 }
 
 int main(int argc, char** argv)
 {
-    if (argc != 3)
+    if (argc != 2)
     {
         usage();
         return 0;
