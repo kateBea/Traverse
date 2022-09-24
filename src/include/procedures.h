@@ -195,7 +195,7 @@ void bfs_path(const graph& p_graph)
             visited_nodes[node] = true;
             std::cout << "visiting node: [";
             std::cout << node << "]";
-            std::cout << " : deph -> (";
+            std::cout << " : depth -> (";
             std::cout << depth[node];
             std::cout << ')' << std::endl;
 
@@ -215,7 +215,7 @@ void bfs_path(const graph& p_graph)
                         visited_nodes[adjacent] = true;
                         depth[adjacent] = depth[front_vertex] + 1;
                         next_on_line.push(adjacent);
-                        std::cout << " : deph -> (";
+                        std::cout << " : depth -> (";
                         std::cout << depth[adjacent];
                         std::cout << ')' << std::endl;
 
