@@ -60,6 +60,6 @@ cd build
 cmake ..
 make
 
-./Traverse path_to_graph_file
+./traverse path_to_graph_file
 ```
 Graph picture made with (can use to visualize graphs): [Graph Editor](https://csacademy.com/app/graph_editor/)
