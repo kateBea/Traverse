@@ -158,7 +158,7 @@ void bfs_path(const graph& p_graph)
     std::vector<float>  depth{ std::vector<float> (total_vertices, - 1) };
     std::vector<bool>   visited_nodes{ std::vector<bool> (total_vertices, false) };
 
-    std::mt19937        rng{ std::random_device() };
+    std::mt19937        rng{ std::random_device{}() };
 
     std::uniform_int_distribution<std::size_t> dist6{ static_cast<std::size_t>(0), total_vertices - 1 };
     l_vertex         =   static_cast<vertex>(dist6(rng));
@@ -215,7 +215,7 @@ void dfs_path(const graph& p_graph)
     std::size_t total_vertices{ p_graph.grade() };
     std::vector<bool>   visited_nodes{ std::vector<bool> (total_vertices, false) };
 
-    std::mt19937            rng{ std::random_device() };
+    std::mt19937            rng{ std::random_device{}() };
 
     // distribution in range [0, total_vertices)
     std::uniform_int_distribution<std::size_t> dist6{ static_cast<std::size_t>(0), total_vertices - 1 };
