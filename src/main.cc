@@ -53,14 +53,14 @@ int main(int argc, char** argv)
     if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
     else                    std::cout << "graph is not empty" << std::endl;
 
-    std::cout << "we print the graph" << std::endl;
+    std::cout << "print the graph" << std::endl;
     std::cout << myGraph << std::endl;
 
-    std::cout << "path followed with dfs traversing" << std::endl;
+    std::cout << "path followed with dfs" << std::endl;
     dfs_path(myGraph);
     std::cout << std::endl;
 
-    std::cout << "path followed with bfs traversing" << std::endl;
+    std::cout << "path followed with bfs" << std::endl;
     bfs_path(myGraph);
 
     return 0;
