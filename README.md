@@ -1,6 +1,6 @@
 # BFS and DFS test
 Small program with C++ to test BFS and DFS traverse on 
-graphs implemented as adjacency lists. There's still some changes to be done.
+graphs implemented as adjacency lists. There's still changes to be done.
 
 # Graph test
 Important NOTE: The graph is assumed to be directed, i.e say
