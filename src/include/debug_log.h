@@ -8,32 +8,32 @@
 
 #ifdef GRAPH_DEBUG
 
-/*print a stack of vertices. Useful for dfs debugging, use wisely*/
-void print_stack(std::stack<vertex> _stack)
+/* print a stack of vertices. Useful for dfs debugging, use wisely*/
+void print_stack(std::stack<vertex> p_stack)
 {
     std::cout << '{';
-    while (not _stack.empty())
+    while (not p_stack.empty())
     {
-        std::cerr << _stack.top();
+        std::cerr << p_stack.top();
         std::cout << ", ";
-        _stack.pop();
+        p_stack.pop();
     }
     std::cout << '}';
 }
 
-/*print and edge to the std output channel*/
-std::ostream& operator<<(std::ostream& _cout, const edge& _edge)
+/* print and edge to the std output channel*/
+std::ostream& operator<<(std::ostream& out, const edge& p_edge)
 {
-    std::cerr << '(' << _edge.first << ", " << _edge.second << ')';
-    return _cout;
+    out << '(' << p_edge.first << ", " << p_edge.second << ')';
+    return out;
 }
 
-/*print the "adjacents" to the std output channel*/
-std::ostream& operator<<(std::ostream& _cout, const std::list<vertex>& adjacents)
+/* print the "adjacents" to the std output channel*/
+std::ostream& operator<<(std::ostream& out, const std::list<vertex>& p_adjacents)
 {
-    for (const auto _adjacents : adjacents)
-        std::cerr << _adjacents << " ";
-    return _cout;
+    for (const auto adjacents : p_adjacents)
+        out << adjacents << " ";
+    return out;
 }
 #endif //GRAPH_DEBUG
 

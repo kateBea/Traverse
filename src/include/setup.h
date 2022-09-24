@@ -9,9 +9,10 @@
 
 #include <graph.h>
 
-bool file_setup(std::string_view file_name, std::vector<edge>& graph)
+bool file_setup(std::string_view    file_name,
+                std::vector<edge>&  graph,
+                std::size_t         &degree)
 {
-    std::cout << "file name: " << file_name.data() << std::endl;
     std::ifstream nodes_input{ file_name.data() };
     std::stringstream file_stream{};
 
@@ -19,25 +20,27 @@ bool file_setup(std::string_view file_name, std::vector<edge>& graph)
 
     if (!nodes_input)
     {
-        std::cerr << "Could not open " << file_name << " file\n";
+        std::cerr << "Could not open '" << file_name << "' file\n";
         return false;
     }
 
     edge temp_edge;
-    std::vector<edge> graph_sample{};
+    bool first{ true };
 
     while (!file_stream.eof())
     {
-        file_stream >> temp_edge.first;
-        file_stream >> temp_edge.second;
+        if (first)
+        {
+            file_stream >> degree;
+            first = false;
+        }
+        else
+        {
+            file_stream >> temp_edge.first;
+            file_stream >> temp_edge.second;
 
-        graph.push_back(temp_edge);
-    }
-
-    for (std::size_t index{}; index < graph_sample.size(); ++index)
-    {
-        std::cout << graph_sample[index].first << ' ';
-        std::cout << graph_sample[index].second << std::endl;
+            graph.push_back(temp_edge);
+        }
     }
 
     return true;
