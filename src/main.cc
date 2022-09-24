@@ -40,27 +40,27 @@ int main(int argc, char** argv)
     for (const auto& l_edges : graph_sample)
         myGraph.add_edge(l_edges);
 
-    std::cout << "graph size: " << myGraph.size() << std::endl;
-    std::cout << "graph degree: " << myGraph.grade() << std::endl;
+    std::cout << "graph size: " << myGraph.size() << '\n';
+    std::cout << "graph degree: " << myGraph.grade() << '\n';
 
-    if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
-    else                    std::cout << "graph is not empty" << std::endl;
+    if (myGraph.empty())    std::cout << "graph is empty" << '\n';
+    else                    std::cout << "graph is not empty" << '\n';
 
 
-    std::cout << "\nAfter adding few edges into the graph" << std::endl;
-    std::cout << "-------------------------------------------------------" << std::endl;
+    std::cout << "\nAfter adding few edges into the graph" << '\n';
+    std::cout << "-------------------------------------------------------" << '\n';
 
-    if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
-    else                    std::cout << "graph is not empty" << std::endl;
+    if (myGraph.empty())    std::cout << "graph is empty" << '\n';
+    else                    std::cout << "graph is not empty" << '\n';
 
-    std::cout << "print the graph" << std::endl;
-    std::cout << myGraph << std::endl;
+    std::cout << "print the graph" << '\n';
+    std::cout << myGraph << '\n';
 
-    std::cout << "path followed with dfs" << std::endl;
+    std::cout << "path followed with dfs" << '\n';
     dfs_path(myGraph);
     std::cout << std::endl;
 
-    std::cout << "path followed with bfs" << std::endl;
+    std::cout << "path followed with bfs" << '\n';
     bfs_path(myGraph);
 
     return 0;
