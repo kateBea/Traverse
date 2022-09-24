@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
 set(MY_PROJECT_NAME "Traverse")
-set(EXEC_NAME "main")
+set(EXEC_NAME "traverse")
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(${MY_PROJECT_NAME})
 

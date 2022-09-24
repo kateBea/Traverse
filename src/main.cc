@@ -1,46 +1,55 @@
 /**
  * @file main.cc
- * @brief 
+ * @brief
  * @version 1.1
  * @date 2022-05-26
- * 
+ *
  * @copyright Copyright (c) 2022
  */
 
-#include <procedures.h>
 #include <cstdint>
+#include <vector>
 #include <iostream>
-#include <graph.h>
+#include <cstdlib>
 
-int main(int, char**)
+#include <graph.h>
+#include <procedures.h>
+#include <setup.h>
+
+void usage()
 {
-    constexpr std::size_t size { 11 };
-    
+    std::cerr << "usage: traverse file_name grap_degree\n"
+    "Program expects three arguments\n";
+}
+
+int main(int argc, char** argv)
+{
+    if (argc != 3)
+    {
+        usage();
+        return 0;
+    }
+
+    const auto size { 11 };
+
     /*for the actual graph visualization*/
     /*sample graph. See graph_sample_2_test_procedures.png*/
-    constexpr edge graph_sample_2[] = {
-        {0,2}, {0,4}, {0,5},
-        {1,4},
-        {2,3}, {2,4},
-        {3,2}, {3,5}, {3,7}, {3,10},
-        {4,5}, {4,7}, {4,9},
-        {5,2}, {5,3}, {5,4},
-        {6,7}, {6,8},
-        {7,1}, {7,4},
-        {8,4}, {8,5}, {8,10},
-        {9,1}, {9,3}, {9,5},
-        {10,7},{10,9}
-    };
-    
+
+    std::vector<edge> graph_sample{};
+    if (not file_setup(argv[1], graph_sample))
+        return 1;
+    else
+        std::cerr << "could read file. Vector size is: " << graph_sample.size()<< std::endl;
+
     graph myGraph(size);
 
     std::cout << myGraph.size() << std::endl;
     std::cout << myGraph.grade() << std::endl;
 
-    if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
-    else                    std::cout << "graph is not empty" << std::endl;
+    if (myGraph.empty())    std::cout << "graph is empty: " << graph_sample.size() << std::endl;
+    else                    std::cout << "graph is not empty" << graph_sample.size() << std::endl;
 
-    for (const auto& _edges : graph_sample_2)
+    for (const auto& _edges : graph_sample)
         myGraph.add_edge(_edges);
 
     std::cout << "This line comes after insertion of few edges into graph" << std::endl;
@@ -56,6 +65,6 @@ int main(int, char**)
 
     std::cout << "path followed with dfs traversing" << std::endl; dfs_path(myGraph); std::cout << std::endl;
     std::cout << "path followed with bfs traversing" << std::endl; bfs_path(myGraph);
-    
+
     return 0;
 }

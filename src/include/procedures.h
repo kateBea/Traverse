@@ -1,3 +1,6 @@
+#ifndef PROCEDURES_HH
+#define PRORCEDURES_HH
+
 #include <iostream>
 #include <graph.h>
 #include <random>
@@ -6,7 +9,7 @@
 
 /*true if theres path from frist vertex to second (implements bfs)*/
 bool bfs_to_target(const graph& _graph, vertex start, vertex target)
-{   
+{
     int total_vertices;
     bool target_found;
     std::list<vertex> adjacents;
@@ -66,11 +69,11 @@ bool dfs_to_target(const graph& _graph, vertex start, vertex target)
         {
             visited_nodes[next_vertex] = true;
             target_found = next_vertex == target;
-            if (not target_found) 
+            if (not target_found)
             {
                 /*if target not found explore adjacent vertices*/
                 for (auto adjacent : _graph._graph[next_vertex])
-                    next_on_line.push(adjacent);    
+                    next_on_line.push(adjacent);
             }
         }
 
@@ -105,7 +108,7 @@ std::list<vertex> bfs_path(const graph& _graph, vertex _vertex)
             {
                 vertex front_vertex = next_on_line.front();
                 next_on_line.pop();
-                
+
                 /*visit all neighbor vertices*/
                 for (auto next_vertex : _graph._graph[front_vertex])
                 {
@@ -130,14 +133,14 @@ void dfs_rec(const graph& _graph, std::vector<bool>& vis, std::list<vertex>& pat
     {
         vis[_vertex] = true;
         path.insert(path.end(), _vertex);
-        for (auto adjacent : _graph._graph[_vertex]) 
+        for (auto adjacent : _graph._graph[_vertex])
             dfs_rec(_graph, vis, path, adjacent);
     }
 }
 
 /*dfs path starting from given vertex*/
 std::list<vertex> dfs_path(const graph& _graph, vertex _vertex)
-{   
+{
     int total_vertices;
     std::vector<bool> visited_vertices;
     std::list<vertex> path;
@@ -167,7 +170,7 @@ void bfs_path(const graph& _graph)
     total_vertices  =   _graph.grade();
     visited_nodes   =   std::vector<bool> (total_vertices, false);
     depth           =   std::vector<float> (total_vertices, -1);
-   
+
     /*pick random vertex*/
     std::random_device  dev;
     std::mt19937        rng(dev());
@@ -181,7 +184,7 @@ void bfs_path(const graph& _graph)
     for (int node = _vertex; node < total_vertices; ++node)
     {
         if (not visited_nodes[node])
-        {   
+        {
             /*new connected component mean we start at depth 0*/
             depth[node] = 0;
 
@@ -197,7 +200,7 @@ void bfs_path(const graph& _graph)
             {
                 vertex front_vertex = next_on_line.front();
                 next_on_line.pop();
-                
+
                 /*visit all neighbor vertices*/
                 for (auto adjacent : _graph._graph[front_vertex])
                 {
@@ -211,7 +214,7 @@ void bfs_path(const graph& _graph)
                         std::cout << " : deph -> (";
                         std::cout << depth[adjacent];
                         std::cout << ')' << std::endl;
-                        
+
                     }
                 }
             }
@@ -249,14 +252,16 @@ void dfs_path(const graph& _graph)
             vertex temp = next_on_line.top();
             next_on_line.pop();
             if (not visited_nodes[temp])
-            {   
+            {
                 /*neighbors has not been visited yet*/
                 visited_nodes[temp] = true;
                 std::cout << "visiting node: [";
                 std::cout << temp << "]" << std::endl;
-                for (auto adjacent : _graph._graph[temp]) 
+                for (auto adjacent : _graph._graph[temp])
                     next_on_line.push(adjacent);
             }
         }
     }
 }
+
+#endif // END PROCEDURES_HH
