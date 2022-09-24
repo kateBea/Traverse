@@ -127,8 +127,7 @@ public:
         return adjacents_of_vertex(p_vertex);
     }
 
-    /* print the whole adjacency list of a graph to the std error channel*/
-    /* every vertex with its adjacents*/
+    /* print every vertex with its adjacents*/
     friend std::ostream& operator<<(std::ostream& out, const graph& graph)
     {
         for (unsigned int i = 0; i < graph.grade(); ++i)
