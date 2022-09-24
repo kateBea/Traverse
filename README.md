@@ -49,8 +49,7 @@ Click [here](https://github.com/kateBea/Traverse/blob/main/src/graphs/grap_1.txt
 # Example building and execution on linux:
 ```
 git clone repo
-cd Traverse
-cd src
+cd Traverse/src
 
 mkdir build
 cd build
