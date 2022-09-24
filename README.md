@@ -5,10 +5,7 @@ graphs implemented as adjacency lists. There's still some changes to be done.
 # Graph test
 Important NOTE: The graph is assumed to be directed, i.e say
 we have a graph with 3 nodes {0, 1, 2}, insert edge (1,2)
-means there is an edge from vertex 1 to vertex 2, if we want the 
-edge in the oposite direction we may add it using provided methods.
-There is some scripts provided showing some small usage of the 
-general class and the functions.
+means there is an edge from vertex 1 to vertex 2.
 
 Example usage included in file [main.cc](src/main.cc):
 
