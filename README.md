@@ -10,32 +10,40 @@ edge in the oposite direction we may add it using provided methods.
 There is some scripts provided showing some small usage of the 
 general class and the functions.
 
-Here is a small example:
+Example usage included in file [main.cc](src/main.cc):
 
 ```cc
-    std::cout << myGraph.size() << std::endl;
-    std::cout << myGraph.grade() << std::endl;
+    std::size_t size {};
+    std::vector<edge> graph_sample{};
+    if (not file_setup(argv[1], graph_sample, size))
+        return 1;
+
+    graph myGraph(size);
+    for (const auto& l_edges : graph_sample)
+        myGraph.add_edge(l_edges);
+
+    std::cout << "graph size: " << myGraph.size() << std::endl;
+    std::cout << "graph degree: " << myGraph.grade() << std::endl;
 
     if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
     else                    std::cout << "graph is not empty" << std::endl;
 
-    myGraph = graph(GRAPH_SIZE);
-    for (const auto& _edges : graph_sample_2)
-        myGraph.add_edge(_edges);
 
-    std::cout << "This line comes after insertion of few edges into graph" << std::endl;
+    std::cout << "\nAfter adding few edges into the graph" << std::endl;
     std::cout << "-------------------------------------------------------" << std::endl;
-    std::cout << "graph has (" << myGraph.size() << ") edges"<< std::endl;
-    std::cout << "graph grade is: " << myGraph.grade() << std::endl;
 
     if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
     else                    std::cout << "graph is not empty" << std::endl;
 
-    std::cout << "we print the graph" << std::endl;
+    std::cout << "print the graph" << std::endl;
     std::cout << myGraph << std::endl;
 
-    std::cout << "path followed with dfs traversing" << std::endl; dfs_path(myGraph); std::cout << std::endl;
-    std::cout << "path followed with bfs traversing" << std::endl; bfs_path(myGraph);
+    std::cout << "path followed with dfs" << std::endl;
+    dfs_path(myGraph);
+    std::cout << std::endl;
+
+    std::cout << "path followed with bfs" << std::endl;
+    bfs_path(myGraph);
 ```
 
 Graph picture made with (can use to visualize graphs): [Graph Editor](https://csacademy.com/app/graph_editor/)
