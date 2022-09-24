@@ -1,5 +1,5 @@
 # BFS and DFS test
-Some small scripts made on C++ to test BFS and DFS traverse on 
+Small program with C++ to test BFS and DFS traverse on 
 graphs implemented as adjacency lists. There's still some changes to be done.
 
 # Graph test
