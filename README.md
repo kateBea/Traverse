@@ -50,6 +50,16 @@ Click [here](https://github.com/kateBea/Traverse/blob/main/src/graphs/grap_1.txt
 
 
 # Example building and execution on linux:
+```
+git clone repo
+cd Traverse
+cd src
 
+mkdir build
+cd build
+cmake ..
+make
 
+./Traverse path_to_graph_file
+```
 Graph picture made with (can use to visualize graphs): [Graph Editor](https://csacademy.com/app/graph_editor/)
