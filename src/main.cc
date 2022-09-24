@@ -37,8 +37,8 @@ int main(int argc, char** argv)
         return 1;
 
     graph myGraph(size);
-    for (const auto& _edges : graph_sample)
-        myGraph.add_edge(_edges);
+    for (const auto& l_edges : graph_sample)
+        myGraph.add_edge(l_edges);
 
     std::cout << "graph size: " << myGraph.size() << std::endl;
     std::cout << "graph degree: " << myGraph.grade() << std::endl;
