@@ -46,7 +46,7 @@ Example usage included in file [main.cc](src/main.cc):
     bfs_path(myGraph);
 ```
 
-Click [here](src/graphs/graph_1.txt) for the graph example file used, and [here](image/graph_sample_2_test_procedures.png) its corresponding graphic representation.
+Click [here](https://github.com/kateBea/Traverse/blob/main/src/graphs/grap_1.txt) for the graph example file used, and [here](image/graph_sample_2_test_procedures.png) its corresponding graphic representation.
 
 
 # Example building and execution on linux:
