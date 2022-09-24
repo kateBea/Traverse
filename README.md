@@ -46,4 +46,10 @@ Example usage included in file [main.cc](src/main.cc):
     bfs_path(myGraph);
 ```
 
+Click [here](src/graphs/graph_1) for the graph example file used, and [here](image/graph_sample_2_test_procedures.png) its corresponding graphic representation.
+
+
+# Example building and execution on linux:
+
+
 Graph picture made with (can use to visualize graphs): [Graph Editor](https://csacademy.com/app/graph_editor/)
