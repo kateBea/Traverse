@@ -22,10 +22,6 @@ Example usage included in file [main.cc](src/main.cc):
     std::cout << "graph size: " << myGraph.size() << std::endl;
     std::cout << "graph degree: " << myGraph.grade() << std::endl;
 
-    if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
-    else                    std::cout << "graph is not empty" << std::endl;
-
-
     std::cout << "\nAfter adding few edges into the graph" << std::endl;
     std::cout << "-------------------------------------------------------" << std::endl;
 
