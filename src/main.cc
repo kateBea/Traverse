@@ -34,10 +34,6 @@ int main(int argc, char** argv)
     std::cout << "graph size: " << myGraph.size() << '\n';
     std::cout << "graph degree: " << myGraph.grade() << '\n';
 
-    if (myGraph.empty())    std::cout << "graph is empty" << '\n';
-    else                    std::cout << "graph is not empty" << '\n';
-
-
     std::cout << "\nAfter adding few edges into the graph" << '\n';
     std::cout << "-------------------------------------------------------" << '\n';
 
