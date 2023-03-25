@@ -10,33 +10,35 @@ means we want to add an edge from vertex 1 to vertex 2 to the graph.
 Example usage included in file [main.cc](src/main.cc):
 
 ```cc
-    std::size_t size {};
-    std::vector<edge> graph_sample{};
-    if (not file_setup(argv[1], graph_sample, size))
-        return 1;
+    // create a new graph with 
+    // nodes_count amount of vertices
+    graph gph(nodes_count);
 
-    graph myGraph(size);
-    for (const auto& l_edges : graph_sample)
-        myGraph.add_edge(l_edges);
+    std::cout << "graph size: " << gph.size() << '\n';
+    std::cout << "graph degree: " << gph.grade() << '\n';
 
-    std::cout << "graph size: " << myGraph.size() << std::endl;
-    std::cout << "graph degree: " << myGraph.grade() << std::endl;
+    std::cout << "\nAdding edges to the graph" << '\n';
+    std::cout << "-------------------------------------------------------" << '\n';
 
-    std::cout << "\nAfter adding few edges into the graph" << std::endl;
-    std::cout << "-------------------------------------------------------" << std::endl;
+    // add edges to the graph
+    for (const auto& edg : edges)
+        gph.add_edge(edg);
 
-    if (myGraph.empty())    std::cout << "graph is empty" << std::endl;
-    else                    std::cout << "graph is not empty" << std::endl;
+    if (gph.empty())    
+        std::cout << "graph is empty" << '\n';
+    else
+        std::cout << "graph is not empty" << '\n';
 
-    std::cout << "print the graph" << std::endl;
-    std::cout << myGraph << std::endl;
+    std::cout << "print the graph" << '\n';
+    std::cout << gph << '\n';
 
-    std::cout << "path followed with dfs" << std::endl;
-    dfs_path(myGraph);
-    std::cout << std::endl;
+    std::cout << "path followed with dfs" << '\n';
+    dfs_path(gph);
+    
+    std::cout << '\n';
 
-    std::cout << "path followed with bfs" << std::endl;
-    bfs_path(myGraph);
+    std::cout << "path followed with bfs" << '\n';
+    bfs_path(gph);
 ```
 
 Click [here](https://github.com/kateBea/Traverse/blob/main/src/graphs/grap_1.txt) for the graph example file used, and [here](image/graph_sample_2_test_procedures.png) its corresponding graphic representation.

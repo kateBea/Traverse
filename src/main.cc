@@ -1,16 +1,52 @@
-#include <cstdint>
+
+// C++ Standard Library
 #include <vector>
+#include <algorithm>
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
+#include <cstddef>
+#include <vector>
+#include <sstream>
+#include <iterator>
+#include <string_view>
 
-#include <graph.h>
-#include <procedures.h>
-#include <setup.h>
+// Project Library
+#include <graph.hh>
+#include <procedures.hh>
+
+// returns -1 if the are no edges in the file
+// or the file could not be opened
+std::int32_t read_edges(std::string_view name, std::vector<edge>& edges)
+{
+    std::int32_t nodes{ -2 };
+    std::ifstream file{ name.data() };
+
+    if (!file)
+    {
+        std::cerr << "Could not open '" << name << "' file\n";
+        return nodes + 1;
+    }
+
+    edge edg;
+
+    while (!file.eof())
+    {
+        file >> edg.first;
+        file >> edg.second;
+
+        nodes = std::max(std::max<decltype(nodes)>(edg.first, edg.second), nodes);
+
+        edges.push_back(edg);
+    }
+
+    return nodes + 1;
+}
 
 void usage()
 {
-    std::cerr << "usage: traverse file_name grap_degree\n"
-                    "Program expects three arguments\n";
+    std::cerr << "usage: traverse file\n"
+                 "Program expects three arguments\n";
 }
 
 int main(int argc, char** argv)
@@ -22,33 +58,37 @@ int main(int argc, char** argv)
     }
 
 
-    std::size_t size {};
-    std::vector<edge> graph_sample{};
-    if (not file_setup(argv[1], graph_sample, size))
+    std::vector<edge> edges{};
+    auto nodes_count = read_edges(argv[1], edges);
+    if (nodes_count == -1)
         return 1;
 
-    graph myGraph(size);
-    for (const auto& l_edges : graph_sample)
-        myGraph.add_edge(l_edges);
+    graph gph(nodes_count);
 
-    std::cout << "graph size: " << myGraph.size() << '\n';
-    std::cout << "graph degree: " << myGraph.grade() << '\n';
+    std::cout << "graph size: " << gph.size() << '\n';
+    std::cout << "graph degree: " << gph.grade() << '\n';
 
-    std::cout << "\nAfter adding few edges into the graph" << '\n';
+    std::cout << "\nAdding edges to the graph" << '\n';
     std::cout << "-------------------------------------------------------" << '\n';
 
-    if (myGraph.empty())    std::cout << "graph is empty" << '\n';
-    else                    std::cout << "graph is not empty" << '\n';
+    for (const auto& edg : edges)
+        gph.add_edge(edg);
+
+    if (gph.empty())    
+        std::cout << "graph is empty" << '\n';
+    else
+        std::cout << "graph is not empty" << '\n';
 
     std::cout << "print the graph" << '\n';
-    std::cout << myGraph << '\n';
+    std::cout << gph << '\n';
 
     std::cout << "path followed with dfs" << '\n';
-    dfs_path(myGraph);
-    std::cout << std::endl;
+    dfs_path(gph);
+
+    std::cout << '\n';
 
     std::cout << "path followed with bfs" << '\n';
-    bfs_path(myGraph);
+    bfs_path(gph);
 
     return 0;
 }
