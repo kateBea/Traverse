@@ -49,10 +49,9 @@ Click [here](https://github.com/kateBea/Traverse/blob/main/src/graphs/grap_1.txt
 git clone repo
 cd Traverse/src
 
-mkdir build
-cd build
+mkdir build && cd build
 cmake ..
-make
+cmake --build .
 
 ./traverse path_to_graph_file
 ```
